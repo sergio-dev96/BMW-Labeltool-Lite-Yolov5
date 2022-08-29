@@ -205,6 +205,32 @@ To connect the model container to the Labeltool, modify the docker-compose.yml f
 
  <img src="./data/repo-data/Capture5.png" >
 
+Different inference engines can be used, just change the ENGINE environment variable:
+
+```shell
+│──/inference
+  │──code
+     │──.env
+```
+
+To use ultralytics/YOLOv5 engine, clone the repository in the inference folder and rename it as yolov5.
+
+## Remote Connection
+
+1. Change the host value (apiUrl key) in the frontend/code/src/assets/config.json file.
+
+  ```json
+      {
+        "vendors": "bmw",
+        "apiUrl": "http://localhost:8000/api", <--------- Right here!
+        "isUploadButtonVisible": true,
+        "isDeleteButtonVisible": true
+      }
+  ```
+
+2. Change the server name value with the host IP in frontend/config/nginx.conf file.
+
+  <img src="./data/repo-data/nginx.png"  >
 
 ## Known Issues
 

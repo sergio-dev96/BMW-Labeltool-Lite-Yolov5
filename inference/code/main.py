@@ -1,6 +1,6 @@
 import sys
 from typing import List
-from models import ApiResponse, ApiResponseModel
+from models_main import ApiResponse, ApiResponseModel
 from inference.errors import Error
 from starlette.responses import FileResponse
 from starlette.staticfiles import StaticFiles

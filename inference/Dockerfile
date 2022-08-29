@@ -1,5 +1,5 @@
-FROM tiangolo/uvicorn-gunicorn:python3.6 AS uvicorn-builder
-FROM openvino/ubuntu18_runtime:2021.1
+FROM tiangolo/uvicorn-gunicorn:python3.8 AS uvicorn-builder
+FROM openvino/ubuntu18_runtime:latest
 
 USER root
 
@@ -24,7 +24,9 @@ ENV LOG_LEVEL debug
 EXPOSE 80
 
 COPY ./code /app
+COPY ./yolov5-master /app
+
 WORKDIR /app
 
 # Setup OpenVINO environment vars before starting
-CMD ["/bin/bash", "-c", "source /opt/intel/openvino/bin/setupvars.sh && /start.sh"]
+CMD ["/bin/bash", "-c", "source /opt/intel/openvino/setupvars.sh && /start.sh"]
