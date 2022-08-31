@@ -215,6 +215,13 @@ Different inference engines can be used, just change the ENGINE environment vari
 
 To use ultralytics/YOLOv5 engine, clone the repository in the inference folder and rename it as yolov5.
 
+## Convert BMW-Labeltool-Lite to YOLOv5 Format
+
+```shell
+python3 convert/converttoyolo.py --dir data/training-data/labels/json
+```
+
+
 ## Remote Connection
 
 1. Change the host value (apiUrl key) in the frontend/code/src/assets/config.json file.
