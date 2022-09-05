@@ -28,7 +28,7 @@ class InferenceEngine(AbstractInferenceEngine):
 		self.net = None
 		self.exec_net = None
 		self.font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
-		self.config = dotenv_values("../.env") 
+		
 		super().__init__(model_path)
 
 	def load(self):
@@ -84,7 +84,7 @@ class InferenceEngine(AbstractInferenceEngine):
 				network=self.net, device_name="CPU")
 		elif self.config["ENGINE"] == Engine.YOLOv5.name:
 			model_pt = next(Path(self.model_path).glob("*.pt"))
-			self.model = torch.hub.load('/app', 'custom', path=os.path.join(self.model_path, str(model_pt)),source='local')
+			self.model = torch.hub.load('/app', 'custom', path=str(model_pt),source='local')
 
 	async def infer(self, input_data, draw):
 		await asyncio.sleep(0.00001)

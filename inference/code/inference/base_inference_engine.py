@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 from inference.exceptions import InvalidModelConfiguration, ModelNotLoaded, ApplicationError
+from dotenv import dotenv_values
 
+class Engine(Enum):
+	YOLOv5 = 1
+	OPENVINO = 2
 
 class AbstractInferenceEngine(ABC):
 
@@ -13,8 +17,10 @@ class AbstractInferenceEngine(ABC):
 		self.labels = []
 		self.configuration = {}
 		self.model_path = model_path
+		self.config = dotenv_values("/app/.env")
 		try:
-			self.validate_configuration()
+			if self.config["ENGINE"] == Engine.OPENVINO.name:
+				self.validate_configuration()
 		except ApplicationError as e:
 			raise e
 		try:
