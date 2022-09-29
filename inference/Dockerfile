@@ -1,5 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn:python3.8 AS uvicorn-builder
-FROM openvino/ubuntu18_runtime:latest
+FROM openvino/ubuntu20_runtime:latest
 
 USER root
 
